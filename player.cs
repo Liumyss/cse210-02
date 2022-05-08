@@ -1,5 +1,12 @@
+/*
+
+    Project: Hilo Specification
+    Name: cse210_02
+    Date: 07/05/2022
+
+*/
+
 using System;
-using System.Collections.Generic;
 
 namespace cse210_02
 {
@@ -13,6 +20,8 @@ namespace cse210_02
         {
         }
 
+        // Start the game & finish the game when user has no more points
+        // or decide to stop the game
         public void StartGame()
         {
             while (isPlaying && totalScore > 0)
@@ -37,6 +46,7 @@ namespace cse210_02
             Console.WriteLine("Thanks for playing!");
         }   
 
+        // Ask the user to draw a card or not
         public void GetInputs()
         {   
             bool chooseCard = true;
@@ -65,6 +75,7 @@ namespace cse210_02
             } while (chooseCard);
         }
 
+        // Draw the two cards numbers
         public void DrawCards()
         {
             if (!isPlaying)
@@ -76,6 +87,9 @@ namespace cse210_02
             card.GetCard2();
         }
 
+        // Check the guess of the user
+        // If user wins = +100pts
+        // If user looses = -75pts
         public void DoOutputs()
         {
             if (!isPlaying)

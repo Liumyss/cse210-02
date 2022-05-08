@@ -11,6 +11,9 @@ namespace cse210_02
         {
 
         }
+
+        // Get the first card with a number between 1 and 13
+        // We know the number of this card before the guessing part
         public void GetCard1(){
 
             Random random1 = new Random();
@@ -20,6 +23,8 @@ namespace cse210_02
             cardOne = card1;
         }
 
+        // Get the second card with a number between 1 and 13
+        // We do not know the number of this card before the guessing part
         public void GetCard2(){
 
             Random random2 = new Random();
@@ -32,16 +37,19 @@ namespace cse210_02
             cardTwo = card2;
         }
 
+        // Display the first card number
         public void DisplayCardOne()
         {
             Console.WriteLine($"The card is: {cardOne}");
         }
-        
+
+        //Display the second card number
         public void DisplayCardTwo()
         {
             Console.WriteLine($"The next card was: {cardTwo}");
         }
 
+        // Check if user's guess is good or not
         public bool guessNumber(string guess)
         {
 
