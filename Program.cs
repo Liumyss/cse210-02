@@ -6,7 +6,8 @@ namespace cse210_02
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Player player = new Player();
+            player.StartGame();
         }
     }
 }
