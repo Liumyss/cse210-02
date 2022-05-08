@@ -18,9 +18,7 @@ namespace cse210_02
 
             Random random1 = new Random();
 
-            int card1 = random1.Next(1,13);
-
-            cardOne = card1;
+            cardOne = random1.Next(1,13);
         }
 
         // Get the second card with a number between 1 and 13
@@ -28,13 +26,13 @@ namespace cse210_02
         public void GetCard2(){
 
             Random random2 = new Random();
-            int card2 = random2.Next(1,13);
+            cardTwo = random2.Next(1,14);
 
-            while(cardOne == card2){
-                card2 = random2.Next(1,13);
+            //A loop to prevent to get the same number as card One
+            while (cardOne == cardTwo)
+            {
+                cardTwo = random2.Next(1,14);
             }
-
-            cardTwo = card2;
         }
 
         // Display the first card number
@@ -53,16 +51,13 @@ namespace cse210_02
         public bool guessNumber(string guess)
         {
 
-          int number1 = cardOne;
-          int number2 = cardTwo;
-
           bool isGood = false;
 
-          if (number1 < number2 && guess == "h")
+          if (cardOne < cardTwo && guess == "h")
           {
               isGood = true;
           }
-          else if (number1 > number2 && guess == "l")
+          else if (cardOne > cardTwo && guess == "l")
           {
               isGood = true;
           }

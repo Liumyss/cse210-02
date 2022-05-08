@@ -1,12 +1,14 @@
 using System;
+using System.Threading;
 
 namespace cse210_02
 {
     public class Player
     {
         Card card = new Card();
-        bool isPlaying = true;
-        int totalScore = 300;
+        public bool isPlaying = true;
+        public int totalScore = 300;
+        public int gameNumber = 0;
 
         public Player()
         {
@@ -16,11 +18,14 @@ namespace cse210_02
         // or decide to stop the game
         public void StartGame()
         {
-
+            
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             Console.WriteLine("Welcome to the Hilo Specification Game!");
             Console.WriteLine();
+            Thread.Sleep(2000);
+
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("-------------- RULES -------------- ");
             Console.WriteLine("1. You start the game with 300 points.");
@@ -30,9 +35,12 @@ namespace cse210_02
             Console.WriteLine("5. If you reach 0 points the game is over.");
             Console.WriteLine("----------------------------------");
             Console.WriteLine();
+            Thread.Sleep(5000);
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("GOOD LUCK!");
             Console.ResetColor();
+            //Thread.Sleep(2000);
 
             while (isPlaying && totalScore > 0)
             {
@@ -57,7 +65,9 @@ namespace cse210_02
                 Console.WriteLine("GAME OVER!");
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Thanks for playing!");
+            Console.WriteLine();
+            Console.WriteLine($"You played during {gameNumber} turns.");
+            Console.WriteLine("Thanks for playing.");
             Console.WriteLine("See you soon!");
             Console.ResetColor();
         }   
@@ -66,11 +76,14 @@ namespace cse210_02
         public void GetInputs()
         {   
             bool chooseCard = true;
-            
+
+            Console.WriteLine();
+            Console.WriteLine("-------------- NEW TURN --------------");
+            Console.WriteLine();
+            Console.Write("Draw a card? [y/n] ");
+
             do
             {
-                Console.WriteLine();
-                Console.WriteLine("Draw a card? [y/n]");
                 string drawCard = Console.ReadLine();
 
                 if (drawCard == "y")
@@ -89,6 +102,9 @@ namespace cse210_02
                     Console.WriteLine("Please enter a valid value");
                 }
             } while (chooseCard);
+
+            Console.WriteLine("--------------------------------------");
+            Console.Clear();
         }
 
         // Draw the two cards numbers
@@ -113,10 +129,33 @@ namespace cse210_02
                 return;
             }
 
+            gameNumber += 1;
+
+            Console.WriteLine($"-------- Turn N°{gameNumber} --------");
+            Console.WriteLine();
+
             card.DisplayCardOne();
 
             Console.Write("Higher or lower? (h/l) ");
-            string playerGuess = Console.ReadLine();
+
+            string playerGuess = "";
+            bool invalidAnswer = true;
+
+            do {
+
+                playerGuess = Console.ReadLine();
+
+                if (playerGuess == "h" || playerGuess == "l") 
+                {
+                    invalidAnswer = false;
+                }
+                else 
+                {
+                    Console.WriteLine("Invalid value. Please try again.");
+                    invalidAnswer = true;
+                }
+
+            } while (invalidAnswer);
 
             card.DisplayCardTwo();
 
