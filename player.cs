@@ -1,11 +1,3 @@
-/*
-
-    Project: Hilo Specification
-    Name: cse210_02
-    Date: 07/05/2022
-
-*/
-
 using System;
 
 namespace cse210_02
@@ -24,6 +16,24 @@ namespace cse210_02
         // or decide to stop the game
         public void StartGame()
         {
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine("Welcome to the Hilo Specification Game!");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("-------------- RULES -------------- ");
+            Console.WriteLine("1. You start the game with 300 points.");
+            Console.WriteLine("2. Individual cards are represented as a number from 1 to 13.");
+            Console.WriteLine("3. You earn 100 points if you guessed the next card correctly.");
+            Console.WriteLine("4. You lose 75 points if you guessed it incorrectly.");
+            Console.WriteLine("5. If you reach 0 points the game is over.");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("GOOD LUCK!");
+            Console.ResetColor();
+
             while (isPlaying && totalScore > 0)
             {
                 
@@ -34,16 +44,22 @@ namespace cse210_02
             }
 
             if (!isPlaying)
-            {
+            {   
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Your total score is {totalScore} points!");
             }
             else if (totalScore <= 0)
-            {
+            {   
+                Console.WriteLine();
                 Console.WriteLine("You have no more points!");
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("GAME OVER!");
             }
-
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Thanks for playing!");
+            Console.WriteLine("See you soon!");
+            Console.ResetColor();
         }   
 
         // Ask the user to draw a card or not
@@ -53,7 +69,7 @@ namespace cse210_02
             
             do
             {
-
+                Console.WriteLine();
                 Console.WriteLine("Draw a card? [y/n]");
                 string drawCard = Console.ReadLine();
 
