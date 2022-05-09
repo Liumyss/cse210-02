@@ -11,6 +11,7 @@ root                    (project root folder)
   +-- cse210-02.csproj             
   +-- card.cs           (specific classes)
   +-- player.cs         (specific classes)
+  +-- point.cs          (specific classes)
   +-- Program.cs        (program entry point)
   +-- README.md         (general info)
 ```
