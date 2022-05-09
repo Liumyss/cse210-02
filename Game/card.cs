@@ -3,7 +3,8 @@ using System;
 
 namespace cse210_02
 {
-    class Card{
+    public class Card
+    {
         public int cardOne = 0;
         public int cardTwo = 0;
 
@@ -14,24 +15,26 @@ namespace cse210_02
 
         // Get the first card with a number between 1 and 13
         // We know the number of this card before the guessing part
-        public void GetCard1(){
+        public void GetCard1()
+        {
 
             Random random1 = new Random();
 
-            cardOne = random1.Next(1,13);
+            cardOne = random1.Next(1, 14);
         }
 
         // Get the second card with a number between 1 and 13
         // We do not know the number of this card before the guessing part
-        public void GetCard2(){
+        public void GetCard2()
+        {
 
             Random random2 = new Random();
-            cardTwo = random2.Next(1,14);
+            cardTwo = random2.Next(1, 14);
 
             //A loop to prevent to get the same number as card One
             while (cardOne == cardTwo)
             {
-                cardTwo = random2.Next(1,14);
+                cardTwo = random2.Next(1, 14);
             }
         }
 
@@ -48,7 +51,7 @@ namespace cse210_02
         }
 
         // Check if user's guess is good or not
-        public bool guessNumber(string guess)
+        public bool GuessNumber(string guess)
         {
 
           bool isGood = false;

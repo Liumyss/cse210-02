@@ -6,6 +6,7 @@ namespace cse210_02
     public class Player
     {
         Card card = new Card();
+        Point point = new Point();
         public bool isPlaying = true;
         public int totalScore = 300;
         public int gameNumber = 0;
@@ -28,19 +29,25 @@ namespace cse210_02
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("-------------- RULES -------------- ");
+            Thread.Sleep(1000);
             Console.WriteLine("1. You start the game with 300 points.");
-            Console.WriteLine("2. Individual cards are represented as a number from 1 to 13.");
+            Thread.Sleep(1000);
+            Console.WriteLine("2. Individual cards are represented as a number from 1 to a specific chosen number.");
+            Thread.Sleep(1000);
             Console.WriteLine("3. You earn 100 points if you guessed the next card correctly.");
+            Thread.Sleep(1000);
             Console.WriteLine("4. You lose 75 points if you guessed it incorrectly.");
+            Thread.Sleep(1000);
             Console.WriteLine("5. If you reach 0 points the game is over.");
+            Thread.Sleep(1000);
             Console.WriteLine("----------------------------------");
             Console.WriteLine();
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("GOOD LUCK!");
             Console.ResetColor();
-            //Thread.Sleep(2000);
+            Thread.Sleep(2000);
 
             while (isPlaying && totalScore > 0)
             {
@@ -56,6 +63,7 @@ namespace cse210_02
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Your total score is {totalScore} points!");
+                point.WinnerMessage(totalScore);
             }
             else if (totalScore <= 0)
             {   
@@ -76,6 +84,8 @@ namespace cse210_02
         public void GetInputs()
         {   
             bool chooseCard = true;
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.WriteLine();
             Console.WriteLine("-------------- NEW TURN --------------");
@@ -159,7 +169,7 @@ namespace cse210_02
 
             card.DisplayCardTwo();
 
-            bool guess = card.guessNumber(playerGuess);
+            bool guess = card.GuessNumber(playerGuess);
 
             if (guess == true)
             {
