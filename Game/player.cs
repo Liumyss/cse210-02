@@ -78,7 +78,7 @@ namespace cse210_02
             Console.WriteLine("Thanks for playing.");
             Console.WriteLine("See you soon!");
             Console.ResetColor();
-        }   
+        }
 
         // Ask the user to draw a card or not
         public void GetInputs()
